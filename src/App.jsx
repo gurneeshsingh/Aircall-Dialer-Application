@@ -7,7 +7,7 @@ import { CallsContext } from "./context/CallsContext"
 
 function App() {
 
-  const baseUrl = import.meta.env.VITE_FEED || 'https://aircall-job.herokuapp.com/'
+  const baseUrl = import.meta.env.VITE_FEED || 'https://charming-bat-singlet.cyclic.app/https://cerulean-marlin-wig.cyclic.app/'
 
 
   const { fetchCallsData } = useContext(CallsContext)

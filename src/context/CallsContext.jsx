@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 
 export const CallsContext = createContext();
-
+const baseUrl = "https://charming-bat-singlet.cyclic.app/https://cerulean-marlin-wig.cyclic.app"
 
 export function CallsContextProvider({ children }) {
 
@@ -37,7 +37,7 @@ export function CallsContextProvider({ children }) {
     async function fetchCallDetail(id) {
         setDetailLoading(true)
         try {
-            const response = await fetch(`https://aircall-job.herokuapp.com/activities/${id}`);
+            const response = await fetch(`${baseUrl}/activities/${id}`);
             const data = await response.json()
             data && setCallDetail(data)
         } catch (error) {
@@ -48,16 +48,16 @@ export function CallsContextProvider({ children }) {
 
     async function markCallArchived(id) {
         try {
-            const response = await fetch(`https://aircall-job.herokuapp.com/activities/${id}`, {
-                method: 'POST',
+            const response = await fetch(`${baseUrl}/activities/${id}`, {
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ is_archived: true })
             });
-            const data = await response.json()
-            data && fetchCallDetail(id)
-            fetchCallsData(`https://aircall-job.herokuapp.com/activities/`)
+            // const data = await response.json()
+             fetchCallDetail(id)
+             fetchCallsData(`${baseUrl}/activities`)
 
         } catch (error) {
             setError(true)
@@ -65,16 +65,16 @@ export function CallsContextProvider({ children }) {
     };
     async function unarchiveCall(id) {
         try {
-            const response = await fetch(`https://aircall-job.herokuapp.com/activities/${id}`, {
-                method: 'POST',
+            const response = await fetch(`${baseUrl}/activities/${id}`, {
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ is_archived: false })
             });
-            const data = await response.json()
-            data && fetchCallDetail(id)
-            fetchCallsData(`https://aircall-job.herokuapp.com/activities/`)
+            // const data = await response.json()
+            fetchCallDetail(id)
+            fetchCallsData(`${baseUrl}/activities`)
 
 
         } catch (error) {

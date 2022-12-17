@@ -52,7 +52,7 @@ const Detail = () => {
           <>
             <section className='w-full font-nunito flex  items-center rounded-2xl space-x-4 shadow-sm py-6 px-4 my-2 bg-[#f9f8ff]'>
               {/* avatar  */}
-              <Avatar alt={callDetail?.from?.slice(0).match(/[a-z]/i) || callDetail?.to?.slice(0).match(/[a-z]/i)} src='#' >
+              <Avatar  src='#' >
               </Avatar>
               {/* number details div  */}
               <div className='flex flex-col flex-1 min-w-min flex-wrap  justify-center'>
